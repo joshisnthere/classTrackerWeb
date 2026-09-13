@@ -17,3 +17,20 @@
       <button type="button" class="theme-toggle__option" data-theme-option="dark">Dark</button>
     </div>
   </header>
+
+  <section class="now-panel">
+    <p class="now-panel__meta" id="clockLine">&nbsp;</p>
+    <p class="now-panel__state" id="stateLine" aria-live="polite">&nbsp;</p>
+    <p class="now-panel__countdown" id="countdownLine">&nbsp;</p>
+    <p class="now-panel__sub" id="subLine">&nbsp;</p>
+  </section>
+
+  <div class="content-grid">
+
+    <section class="today-schedule">
+      <h2 class="section-title">Today</h2>
+      <ol class="period-list" id="todayList">
+        <!-- populated by script.js -->
+      </ol>
+      <p class="empty-note" id="todayEmptyNote" hidden>No classes added for today yet. Add some in the editor.</p>
+    </section>
