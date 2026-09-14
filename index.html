@@ -34,3 +34,35 @@
       </ol>
       <p class="empty-note" id="todayEmptyNote" hidden>No classes added for today yet. Add some in the editor.</p>
     </section>
+
+    <section class="editor">
+      <h2 class="section-title">Edit schedule</h2>
+
+      <div class="day-tabs" id="dayTabs" role="tablist" aria-label="Day of week">
+        <button type="button" class="day-tabs__tab" data-day="mon" role="tab">Mon</button>
+        <button type="button" class="day-tabs__tab" data-day="tue" role="tab">Tue</button>
+        <button type="button" class="day-tabs__tab" data-day="wed" role="tab">Wed</button>
+        <button type="button" class="day-tabs__tab" data-day="thu" role="tab">Thu</button>
+        <button type="button" class="day-tabs__tab" data-day="fri" role="tab">Fri</button>
+      </div>
+
+      <div class="period-rows" id="periodRows">
+        <!-- populated by script.js -->
+      </div>
+
+      <button type="button" class="add-row-btn" id="addRowBtn">Add a period</button>
+      <p class="row-error" id="rowError" hidden></p>
+    </section>
+
+  </div>
+
+  <section class="settings">
+    <button type="button" class="text-btn" id="clearDataBtn">Clear all schedule data</button>
+    <p class="settings__note">Everything is saved on this device only, in your browser's local storage.</p>
+  </section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
