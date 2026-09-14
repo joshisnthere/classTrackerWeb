@@ -136,3 +136,27 @@ function computeState(periods, now) {
       };
     }
   }
+
+  return { status: "done", dayKey };
+}
+
+/* ---------------------------------------------------------------------
+   Rendering: now panel
+--------------------------------------------------------------------- */
+
+function renderNowPanel(schedule, now) {
+  const clockLine = document.getElementById("clockLine");
+  const stateLine = document.getElementById("stateLine");
+  const countdownLine = document.getElementById("countdownLine");
+  const subLine = document.getElementById("subLine");
+
+  clockLine.textContent = formatClockLabel(now);
+
+  const state = computeState(schedule, now);
+
+  if (state.status === "weekend") {
+    stateLine.textContent = "No school today";
+    countdownLine.textContent = "\u2014";
+    subLine.textContent = "Enjoy the weekend.";
+    return;
+  }
