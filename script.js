@@ -86,3 +86,53 @@ function formatDuration(totalSeconds) {
   }
   return `${m}:${String(s).padStart(2, "0")}`;
 }
+
+function sortedPeriods(periods) {
+  return [...periods].sort((a, b) => timeToSeconds(a.start) - timeToSeconds(b.start));
+}
+
+/* ---------------------------------------------------------------------
+   Schedule state: figures out what's happening right now
+--------------------------------------------------------------------- */
+
+function computeState(periods, now) {
+  const jsDay = now.getDay();
+  const dayKey = JS_DAY_TO_KEY[jsDay];
+
+  if (!dayKey) {
+    return { status: "weekend" };
+  }
+
+  const todays = sortedPeriods(periods[dayKey] || []);
+  if (todays.length === 0) {
+    return { status: "empty", dayKey };
+  }
+
+  const nowSeconds = nowToSeconds(now);
+
+  for (let i = 0; i < todays.length; i++) {
+    const period = todays[i];
+    const start = timeToSeconds(period.start);
+    const end = timeToSeconds(period.end);
+
+    if (nowSeconds >= start && nowSeconds < end) {
+      const next = todays[i + 1] || null;
+      return {
+        status: "in-class",
+        dayKey,
+        current: period,
+        remainingSeconds: end - nowSeconds,
+        next,
+      };
+    }
+
+    if (nowSeconds < start) {
+      const isFirst = i === 0;
+      return {
+        status: isFirst ? "before-school" : "break",
+        dayKey,
+        next: period,
+        remainingSeconds: start - nowSeconds,
+      };
+    }
+  }
