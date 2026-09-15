@@ -256,3 +256,25 @@ function renderDayTabs() {
     tab.setAttribute("aria-selected", isActive ? "true" : "false");
   });
 }
+
+function renderEditor() {
+  const container = document.getElementById("periodRows");
+  container.innerHTML = "";
+
+  const periods = sortedPeriods(schedule[activeDay] || []);
+
+  periods.forEach((period) => {
+    container.append(buildPeriodRow(period));
+  });
+}
+
+function buildPeriodRow(period) {
+  const row = document.createElement("div");
+  row.className = "period-row";
+  row.dataset.id = period.id;
+
+  const nameInput = document.createElement("input");
+  nameInput.type = "text";
+  nameInput.placeholder = "Class name";
+  nameInput.value = period.name;
+  nameInput.addEventListener("change", () => updatePeriod(period.id, { name: nameInput.value }));
