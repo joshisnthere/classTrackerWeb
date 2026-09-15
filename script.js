@@ -206,3 +206,26 @@ function renderTodayList(schedule, now) {
   const list = document.getElementById("todayList");
   const emptyNote = document.getElementById("todayEmptyNote");
   const dayKey = JS_DAY_TO_KEY[now.getDay()];
+
+  list.innerHTML = "";
+
+  if (!dayKey || (schedule[dayKey] || []).length === 0) {
+    emptyNote.hidden = false;
+    return;
+  }
+  emptyNote.hidden = true;
+
+  const nowSeconds = nowToSeconds(now);
+  const todays = sortedPeriods(schedule[dayKey]);
+
+  todays.forEach((period) => {
+    const start = timeToSeconds(period.start);
+    const end = timeToSeconds(period.end);
+
+    const row = document.createElement("li");
+    row.className = "period-list__row";
+    if (nowSeconds >= start && nowSeconds < end) {
+      row.classList.add("period-list__row--current");
+    } else if (nowSeconds >= end) {
+      row.classList.add("period-list__row--past");
+    }
