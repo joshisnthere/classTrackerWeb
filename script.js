@@ -160,3 +160,19 @@ function renderNowPanel(schedule, now) {
     subLine.textContent = "Enjoy the weekend.";
     return;
   }
+
+  if (state.status === "empty") {
+    stateLine.textContent = "Nothing scheduled today";
+    countdownLine.textContent = "\u2014";
+    subLine.textContent = "Add today's periods in the editor below.";
+    return;
+  }
+
+  if (state.status === "in-class") {
+    stateLine.textContent = state.current.name;
+    countdownLine.textContent = formatDuration(state.remainingSeconds);
+    subLine.textContent = state.next
+      ? `Then ${state.next.name} at ${formatTimeLabel(state.next.start)}`
+      : "Last period of the day";
+    return;
+  }
