@@ -176,3 +176,33 @@ function renderNowPanel(schedule, now) {
       : "Last period of the day";
     return;
   }
+
+  if (state.status === "before-school") {
+    stateLine.textContent = "Not started yet";
+    countdownLine.textContent = formatDuration(state.remainingSeconds);
+    subLine.textContent = `Until ${state.next.name} at ${formatTimeLabel(state.next.start)}`;
+    return;
+  }
+
+  if (state.status === "break") {
+    stateLine.textContent = "Between classes";
+    countdownLine.textContent = formatDuration(state.remainingSeconds);
+    subLine.textContent = `Until ${state.next.name} at ${formatTimeLabel(state.next.start)}`;
+    return;
+  }
+
+  if (state.status === "done") {
+    stateLine.textContent = "That's it for today";
+    countdownLine.textContent = "\u2014";
+    subLine.textContent = "No more periods left today.";
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Rendering: today's list
+--------------------------------------------------------------------- */
+
+function renderTodayList(schedule, now) {
+  const list = document.getElementById("todayList");
+  const emptyNote = document.getElementById("todayEmptyNote");
+  const dayKey = JS_DAY_TO_KEY[now.getDay()];
