@@ -229,3 +229,30 @@ function renderTodayList(schedule, now) {
     } else if (nowSeconds >= end) {
       row.classList.add("period-list__row--past");
     }
+
+    const time = document.createElement("span");
+    time.className = "period-list__time";
+    time.textContent = `${formatTimeLabel(period.start)} \u2013 ${formatTimeLabel(period.end)}`;
+
+    const name = document.createElement("span");
+    name.className = "period-list__name";
+    name.textContent = period.name;
+
+    row.append(time, name);
+    list.append(row);
+  });
+}
+
+/* ---------------------------------------------------------------------
+   Rendering: editor
+--------------------------------------------------------------------- */
+
+let activeDay = "mon";
+let schedule = loadSchedule();
+
+function renderDayTabs() {
+  document.querySelectorAll(".day-tabs__tab").forEach((tab) => {
+    const isActive = tab.dataset.day === activeDay;
+    tab.setAttribute("aria-selected", isActive ? "true" : "false");
+  });
+}
