@@ -278,3 +278,27 @@ function buildPeriodRow(period) {
   nameInput.placeholder = "Class name";
   nameInput.value = period.name;
   nameInput.addEventListener("change", () => updatePeriod(period.id, { name: nameInput.value }));
+
+  const startInput = document.createElement("input");
+  startInput.type = "time";
+  startInput.value = period.start;
+  startInput.addEventListener("change", () => updatePeriod(period.id, { start: startInput.value }));
+
+  const endInput = document.createElement("input");
+  endInput.type = "time";
+  endInput.value = period.end;
+  endInput.addEventListener("change", () => updatePeriod(period.id, { end: endInput.value }));
+
+  const removeBtn = document.createElement("button");
+  removeBtn.type = "button";
+  removeBtn.className = "period-row__remove";
+  removeBtn.textContent = "Remove";
+  removeBtn.addEventListener("click", () => removePeriod(period.id));
+
+  row.append(nameInput, startInput, endInput, removeBtn);
+  return row;
+}
+
+/* ---------------------------------------------------------------------
+   Editor actions
+--------------------------------------------------------------------- */
