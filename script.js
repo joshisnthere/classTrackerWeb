@@ -302,3 +302,22 @@ function buildPeriodRow(period) {
 /* ---------------------------------------------------------------------
    Editor actions
 --------------------------------------------------------------------- */
+
+function showRowError(message) {
+  const errorEl = document.getElementById("rowError");
+  errorEl.textContent = message;
+  errorEl.hidden = false;
+  setTimeout(() => { errorEl.hidden = true; }, 3000);
+}
+
+function updatePeriod(id, changes) {
+  const periods = schedule[activeDay];
+  const period = periods.find((p) => p.id === id);
+  if (!period) return;
+
+  const updated = { ...period, ...changes };
+  if (timeToSeconds(updated.end) <= timeToSeconds(updated.start)) {
+    showRowError("End time needs to be after the start time.");
+    renderEditor();
+    return;
+  }
