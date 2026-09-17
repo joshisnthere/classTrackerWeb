@@ -321,3 +321,37 @@ function updatePeriod(id, changes) {
     renderEditor();
     return;
   }
+
+  Object.assign(period, changes);
+  saveSchedule(schedule);
+  renderEditor();
+  renderTodayList(schedule, new Date());
+  renderNowPanel(schedule, new Date());
+}
+
+function removePeriod(id) {
+  schedule[activeDay] = schedule[activeDay].filter((p) => p.id !== id);
+  saveSchedule(schedule);
+  renderEditor();
+  renderTodayList(schedule, new Date());
+  renderNowPanel(schedule, new Date());
+}
+
+function addPeriod() {
+  const id = `p_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
+  schedule[activeDay].push({ id, name: "", start: "09:00", end: "09:50" });
+  saveSchedule(schedule);
+  renderEditor();
+}
+
+/* ---------------------------------------------------------------------
+   Theme
+--------------------------------------------------------------------- */
+
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  document.querySelectorAll(".theme-toggle__option").forEach((btn) => {
+    btn.setAttribute("aria-pressed", btn.dataset.themeOption === theme ? "true" : "false");
+  });
+  saveTheme(theme);
+}
