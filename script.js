@@ -355,3 +355,44 @@ function applyTheme(theme) {
   });
   saveTheme(theme);
 }
+
+/* ---------------------------------------------------------------------
+   Wire everything up
+--------------------------------------------------------------------- */
+
+function init() {
+  applyTheme(loadTheme());
+
+  document.querySelectorAll(".theme-toggle__option").forEach((btn) => {
+    btn.addEventListener("click", () => applyTheme(btn.dataset.themeOption));
+  });
+
+  document.querySelectorAll(".day-tabs__tab").forEach((tab) => {
+    tab.addEventListener("click", () => {
+      activeDay = tab.dataset.day;
+      renderDayTabs();
+      renderEditor();
+    });
+  });
+
+  document.getElementById("addRowBtn").addEventListener("click", addPeriod);
+
+  document.getElementById("clearDataBtn").addEventListener("click", () => {
+    const btn = document.getElementById("clearDataBtn");
+    if (btn.dataset.confirming === "true") {
+      schedule = emptySchedule();
+      saveSchedule(schedule);
+      renderEditor();
+      renderTodayList(schedule, new Date());
+      renderNowPanel(schedule, new Date());
+      btn.textContent = "Clear all schedule data";
+      btn.dataset.confirming = "false";
+    } else {
+      btn.dataset.confirming = "true";
+      btn.textContent = "Click again to confirm";
+      setTimeout(() => {
+        btn.dataset.confirming = "false";
+        btn.textContent = "Clear all schedule data";
+      }, 3000);
+    }
+  });
