@@ -1,0 +1,50 @@
+/* ---------------------------------------------------------------------
+   Tokens
+--------------------------------------------------------------------- */
+
+:root[data-theme="light"] {
+  --bg: #f4f3ee;
+  --panel: #ebe9e1;
+  --ink: #20242b;
+  --muted: #726d5f;
+  --line: #dad6ca;
+  --accent: #2f6f5e;
+  --accent-soft: #dde7e3;
+  --accent-warm: #b5763a;
+  --danger: #a23b3b;
+}
+
+:root[data-theme="dark"] {
+  --bg: #1b1f1d;
+  --panel: #232823;
+  --ink: #ece9e1;
+  --muted: #93917f;
+  --line: #333830;
+  --accent: #6fbfa0;
+  --accent-soft: #26332d;
+  --accent-warm: #e0a458;
+  --danger: #d97575;
+}
+
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  --radius: 6px;
+
+  --font-sans: -apple-system, "Segoe UI", "Segoe UI Variable", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", "Consolas", "Roboto Mono", monospace;
+}
+
+/* ---------------------------------------------------------------------
+   Base
+--------------------------------------------------------------------- */
+
+* {
+  box-sizing: border-box;
+}
