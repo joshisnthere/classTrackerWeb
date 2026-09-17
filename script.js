@@ -396,3 +396,17 @@ function init() {
       }, 3000);
     }
   });
+
+  renderDayTabs();
+  renderEditor();
+
+  const tick = () => {
+    const now = new Date();
+    renderNowPanel(schedule, now);
+    renderTodayList(schedule, now);
+  };
+  tick();
+  setInterval(tick, 1000);
+}
+
+document.addEventListener("DOMContentLoaded", init);
