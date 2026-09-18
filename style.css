@@ -140,3 +140,26 @@ body {
   padding-bottom: var(--space-6);
   margin-bottom: var(--space-6);
 }
+
+.now-panel__meta {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0 0 var(--space-3);
+}
+
+.now-panel__state {
+  font-size: clamp(18px, 2.6vw, 24px);
+  font-weight: 600;
+  margin: 0 0 var(--space-2);
+}
+
+.now-panel__countdown {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: clamp(40px, 9vw, 84px);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--accent);
+  margin: 0 0 var(--space-3);
+}
