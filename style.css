@@ -179,3 +179,19 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: var(--space-6);
 }
+
+@media (max-width: 720px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Today's schedule list
+--------------------------------------------------------------------- */
+
+.period-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
