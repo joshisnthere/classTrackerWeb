@@ -163,3 +163,19 @@ body {
   color: var(--accent);
   margin: 0 0 var(--space-3);
 }
+
+.now-panel__sub {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* ---------------------------------------------------------------------
+   Content grid
+--------------------------------------------------------------------- */
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
