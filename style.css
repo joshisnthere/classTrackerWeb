@@ -195,3 +195,23 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.period-list__row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.period-list__row:last-child {
+  border-bottom: none;
+}
+
+.period-list__time {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+  min-width: 118px;
+  flex-shrink: 0;
+}
