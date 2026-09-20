@@ -215,3 +215,36 @@ body {
   min-width: 118px;
   flex-shrink: 0;
 }
+
+.period-list__name {
+  font-size: 15px;
+}
+
+.period-list__row--current .period-list__name {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.period-list__row--current .period-list__time {
+  color: var(--accent);
+}
+
+.period-list__row--past {
+  opacity: 0.45;
+}
+
+.empty-note {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ---------------------------------------------------------------------
+   Editor
+--------------------------------------------------------------------- */
+
+.day-tabs {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  border-bottom: 1px solid var(--line);
+}
