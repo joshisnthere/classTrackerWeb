@@ -316,3 +316,39 @@ body {
   padding: var(--space-2);
   white-space: nowrap;
 }
+
+.add-row-btn {
+  margin-top: var(--space-3);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--ink);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-2) var(--space-4);
+  cursor: pointer;
+}
+
+.add-row-btn:hover {
+  border-color: var(--accent);
+}
+
+.row-error {
+  font-size: 13px;
+  color: var(--danger);
+  margin-top: var(--space-2);
+}
+
+/* ---------------------------------------------------------------------
+   Settings
+--------------------------------------------------------------------- */
+
+.settings {
+  margin-top: var(--space-7);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
