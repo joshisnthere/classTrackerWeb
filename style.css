@@ -300,3 +300,19 @@ body {
   padding: var(--space-2);
   width: 100%;
 }
+
+.period-row input[type="time"] {
+  font-family: var(--font-mono);
+  width: 118px;
+}
+
+.period-row__remove {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--danger);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-2);
+  white-space: nowrap;
+}
