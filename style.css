@@ -272,3 +272,31 @@ body {
   flex-direction: column;
   gap: var(--space-2);
 }
+
+.period-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  gap: var(--space-2);
+  align-items: center;
+  padding: var(--space-2);
+  background: var(--panel);
+  border-radius: var(--radius);
+}
+
+@media (max-width: 480px) {
+  .period-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.period-row input[type="text"],
+.period-row input[type="time"] {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-2);
+  width: 100%;
+}
