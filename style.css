@@ -78,10 +78,15 @@ body {
 }
 
 .page {
-  max-width: 880px;
-  margin: 0 auto;
-  padding: var(--space-6) var(--space-4) var(--space-7);
+  max-width: none;
+  width: 100vw;
+  height: 100vh;
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
+
 
 .section-title {
   font-size: 14px;
@@ -136,10 +141,20 @@ body {
 --------------------------------------------------------------------- */
 
 .now-panel {
-  border-bottom: 1px solid var(--line);
-  padding-bottom: var(--space-6);
-  margin-bottom: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  text-align: center;
+  border: none;
+  margin: 0;
 }
+.now-panel__countdown {
+  font-size: clamp(80px, 12vw, 160px);
+  color: var(--accent);
+}
+
 
 .now-panel__meta {
   font-family: var(--font-mono);
@@ -278,10 +293,20 @@ body {
   grid-template-columns: 1fr auto auto auto;
   gap: var(--space-2);
   align-items: center;
-  padding: var(--space-2);
-  background: var(--panel);
-  border-radius: var(--radius);
+  padding: var(--space-3);
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
+
+.period-row:hover {
+  transform: scale(1.02);
+  background: rgba(255, 255, 255, 0.35);
+}
+
 
 @media (max-width: 480px) {
   .period-row {
@@ -337,6 +362,23 @@ body {
   font-size: 13px;
   color: var(--danger);
   margin-top: var(--space-2);
+}
+
+.editor {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--line);
+  padding: var(--space-4);
+  transition: transform 0.3s ease;
+  transform: translateY(100%);
+}
+
+.editor.open {
+  transform: translateY(0);
 }
 
 /* ---------------------------------------------------------------------
